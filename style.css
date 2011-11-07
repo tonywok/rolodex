@@ -51,6 +51,7 @@ body {
 
 @-webkit-keyframes middle-to-bottom {
   0% {
+    z-index: 100;
     -webkit-transform: scale(1, 0.06975647374412523);
     -webkit-transform: perspective(300) rotateX(-270deg);
   }
@@ -91,9 +92,9 @@ body {
     -webkit-transform: perspective(300) rotateX(-350deg);
   }
   100% {
+    z-index: 10;
     -webkit-transform: scale(1, 1);
     -webkit-transform: perspective(300) rotateX(-360deg);
-    z-index: 100;
   }
 }
 
