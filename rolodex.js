@@ -1,4 +1,18 @@
+$(function() {
+  $(".number").bind("webkitAnimationEnd", some_func);
+
+  function some_func() {
+    console.log("hey");
+    $('#rolodex-top-0').removeClass('animate-top');
+    $('#rolodex-top-0').addClass('animate-top');
+    $(this).bind('webkitAnimationEnd', some_func);
+  }
+
+  $('#rolodex-top-0').addClass('animate-top');
+});
+
 jQuery(function($) {
+  return;
 
   var Rolodex = (function(rolodex) {
     var current = 0;
