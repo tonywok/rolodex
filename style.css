@@ -96,8 +96,7 @@ body {
   }
 }
 
-.top-current {
-  z-index: 200;
+.animate-top {
   /* -webkit-animation-timing-function: ease-out; */
   -webkit-transform-origin: 50% 100%;
   -webkit-animation-name: top-to-middle;
@@ -106,8 +105,7 @@ body {
   -webkit-animation-fill-mode: backwards;
 }
 
-.bottom-next {
-  z-index: 200;
+.animate-bottom {
   /* -webkit-animation-timing-function: ease-out; */
   -webkit-transform-origin: 50% 0%;
   -webkit-animation-name: middle-to-bottom;
@@ -117,12 +115,20 @@ body {
   -webkit-animation-fill-mode: forwards;
 }
 
-.bottom-current {
-  z-index: 100;
+.top-current {
+  z-index: 200;
 }
 
 .top-next {
   z-index: 100;
+}
+
+.bottom-current {
+  z-index: 100;
+}
+
+.bottom-next {
+  z-index: 200;
 }
 
 .number {

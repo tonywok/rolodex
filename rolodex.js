@@ -1,26 +1,28 @@
 jQuery(function($) {
 
   var Rolodex = (function(rolodex) {
-    var cssEvents = { flip : 'top-to-middle', flop : 'middle-to-bottom' },
-        index   = 0, next;
+    var current = 0;
+    var next;
+    var prev;
 
     var advance = function() {
-      index = (index + 1) % 10;
+      prev = (current + 10 - 1) % 10;
+      next = (current + 1) % 10;
 
-      console.log("remove animation triggering classes: top-current, bottom-next");
-      $("img.top-current").removeClass('top-current');
-      $("img.bottom-next").removeClass('bottom-next');
+      // remove top-current
+      $('#rolodex-top-' + prev).removeClass('top-current');
+      $('#rolodex-bottom' + prev).removeClass('bottom-current');
 
-      console.log("remove next");
-      $("img.top-next").removeClass("top-")
-      $("img.bottom-next").removeClass("bottom-next")
+      $('#rolodex-top-' + current).removeClass('top-next');
+      $('#rolodex-bottom' + current).removeClass('bottom-next');
 
-      console.log("new currents, triggering animation")
-      .addClass("top-current");
-      .addClass("bottom-current");
+      $('#rolodex-top-' + current).addClass('top-current');
+      $('#rolodex-bottom' + current).addClass('bottom-current');
 
-      $("#rolodex-top-" + index).addClass("top-next");
-      $("#rolodex-bottom-" + index).addClass("bottom-next");
+      $('#rolodex-top-' + next).addClass('top-next');
+      $('#rolodex-bottom-' + next).addClass('bottom-next');
+
+      current = next;
     }
 
     rolodex.init = function(options) {
@@ -28,7 +30,11 @@ jQuery(function($) {
         var event = e.originalEvent;
 
         if ( event.animationName === 'middle-to-bottom' ) {
+          $('#rolodex-top-' + current).removeClass('animate-top');
+          $('#rolodex-bottom-' + next).removeClass('animate-bottom');
           advance();
+          $('#rolodex-top-' + current).addClass('animate-top');
+          $('#rolodex-bottom-' + next).addClass('animate-bottom');
         }
       });
 
@@ -37,6 +43,9 @@ jQuery(function($) {
 
       $('#rolodex-top-1').addClass('top-next');
       $('#rolodex-bottom-1').addClass('bottom-next');
+
+      $('#rolodex-top-0').addClass('animate-top');
+      $('#rolodex-bottom-1').addClass('animate-bottom');
     };
 
     return rolodex;
