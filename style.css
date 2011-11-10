@@ -51,7 +51,6 @@ body {
 
 @-webkit-keyframes middle-to-bottom {
   0% {
-    z-index: 100;
     -webkit-transform: scale(1, 0.06975647374412523);
     -webkit-transform: perspective(300) rotateX(-270deg);
   }
@@ -92,29 +91,38 @@ body {
     -webkit-transform: perspective(300) rotateX(-350deg);
   }
   100% {
-    z-index: 10;
     -webkit-transform: scale(1, 1);
     -webkit-transform: perspective(300) rotateX(-360deg);
   }
 }
 
-.top-to-middle {
+.top-current {
+  z-index: 200;
   /* -webkit-animation-timing-function: ease-out; */
   -webkit-transform-origin: 50% 100%;
   -webkit-animation-name: top-to-middle;
-  -webkit-animation-duration: 0.5s;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-fill-mode: backwards;
+}
+
+.bottom-next {
+  z-index: 200;
+  /* -webkit-animation-timing-function: ease-out; */
+  -webkit-transform-origin: 50% 0%;
+  -webkit-animation-name: middle-to-bottom;
+  -webkit-animation-delay: 1.5s;
+  -webkit-animation-duration: 1.5s;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-fill-mode: forwards;
 }
 
-.middle-to-bottom {
-  /* -webkit-animation-timing-function: ease-out; */
-  -webkit-transform-origin: 50% 0%;
-  -webkit-animation-name: middle-to-bottom;
-  -webkit-animation-delay: 0.5s;
-  -webkit-animation-duration: 0.5s;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-fill-mode: forwards;
+.bottom-current {
+  z-index: 100;
+}
+
+.top-next {
+  z-index: 100;
 }
 
 .number {

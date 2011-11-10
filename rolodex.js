@@ -4,44 +4,39 @@ jQuery(function($) {
     var cssEvents = { flip : 'top-to-middle', flop : 'middle-to-bottom' },
         index   = 0, next;
 
-    rolodex.advance = function() {
-      next = (index + 1) % 10;
+    var advance = function() {
+      index = (index + 1) % 10;
 
-      // remove some classes!
+      console.log("remove animation triggering classes: top-current, bottom-next");
       $("img.top-current").removeClass('top-current');
-      $("img.bottom-current").removeClass('bottom-current');
+      $("img.bottom-next").removeClass('bottom-next');
 
-      $("img.top-next").removeClass("top-next").addClass("top-current");
-      $("img.bottom-next").removeClass("bottom-next").addClass("bottom-current");
+      console.log("remove next");
+      $("img.top-next").removeClass("top-")
+      $("img.bottom-next").removeClass("bottom-next")
 
-      /* $("#rolodex-top-" + index).addClass("top-current"); */
-      $("#rolodex-top-" + next).addClass("top-next");
-      /* $("#rolodex-bottom-" + index).addClass("bottom-current"); */
-      $("#rolodex-bottom-" + next).addClass("bottom-next");
+      console.log("new currents, triggering animation")
+      .addClass("top-current");
+      .addClass("bottom-current");
 
-      index = next;
+      $("#rolodex-top-" + index).addClass("top-next");
+      $("#rolodex-bottom-" + index).addClass("bottom-next");
     }
 
-      // $(".number").bind("webkitAnimationStart", function(e) {
-      //   var event = e.originalEvent;
-      // });
     rolodex.init = function(options) {
-      index = 0;
-
       $(".number").bind("webkitAnimationEnd", function(e) {
         var event = e.originalEvent;
 
         if ( event.animationName === 'middle-to-bottom' ) {
-          // $('#rolodex-top-' + top).removeClass('top-current');
-          // $('#rolodex-bottom-' + bottom).removeClass('bottom-previous');
-
-          // $('#rolodex-top-' + top).removeClass('top-to-middle');
-          // $('#rolodex-bottom-' + bottom).removeClass('middle-to-bottom');
-          $('
+          advance();
         }
       });
 
-      setInterval(advance, 1000);
+      $('#rolodex-top-0').addClass('top-current');
+      $('#rolodex-bottom-0').addClass('bottom-current');
+
+      $('#rolodex-top-1').addClass('top-next');
+      $('#rolodex-bottom-1').addClass('bottom-next');
     };
 
     return rolodex;
@@ -49,5 +44,4 @@ jQuery(function($) {
   })({});
 
   Rolodex.init();
-
 });
